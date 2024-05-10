@@ -193,8 +193,10 @@ struct Msg {
         int version;
         int count_running;
         char *label;
-        int term_width;
-        enum ListFormat list_format;
+        struct {
+            int term_width;
+            enum ListFormat list_format;
+        } list;
     } u;
 };
 

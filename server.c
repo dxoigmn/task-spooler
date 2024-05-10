@@ -412,8 +412,8 @@ client_read(int index) {
             s_kill_all_jobs(s);
             break;
         case LIST:
-            term_width = m.u.term_width;
-            s_list(s, m.u.list_format);
+            term_width = m.u.list.term_width;
+            s_list(s, m.u.list.list_format);
             /* We must actively close, meaning End of Lines */
             close(s);
             remove_connection(index);
