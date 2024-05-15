@@ -202,8 +202,8 @@ void c_list_jobs() {
     struct Msg m = default_msg();
 
     m.type = LIST;
-    m.u.term_width = term_width;
-    m.u.list_format = command_line.list_format;
+    m.u.list.term_width = term_width;
+    m.u.list.list_format = command_line.list_format;
     send_msg(server_socket, &m);
 }
 
