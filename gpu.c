@@ -9,6 +9,7 @@
 #include "main.h"
 
 #define TS_VISIBLE_DEVICES "TS_VISIBLE_DEVICES"
+#define TS_FREE_PERCENTAGE "TS_FREE_PERCENTAGE"
 
 static int free_percentage = 90;
 static int num_total_gpus;
@@ -22,6 +23,17 @@ static void set_cuda_env() {
 void initGPU() {
     unsigned int nDevices;
     nvmlReturn_t result;
+    char *str;
+
+    // read TS_FREE_PERCENTAGE
+    str = getenv(TS_FREE_PERCENTAGE);
+    if (str != NULL) {
+        int value;
+        value = abs(atoi(str));
+        if (value > 0 && value < 100) {
+            free_percentage = value;
+        }
+    }
 
     set_cuda_env();
     result = nvmlInit();

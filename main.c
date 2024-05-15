@@ -422,7 +422,7 @@ void parse_opts(int argc, char **argv) {
 
     command_line.command.num = 0;
 
-    /* if the request is still the default option... 
+    /* if the request is still the default option...
      * (the default values should be centralized) */
     if (optind < argc && command_line.request == c_LIST) {
         command_line.request = c_QUEUE;
