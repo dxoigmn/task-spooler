@@ -164,7 +164,7 @@ void server_main(int notify_fd, char *_path) {
 
     process_type = SERVER;
     max_descriptors = get_max_descriptors();
-    
+
     /* allocate dynamic memory for client_cs, thus removing any arbitrary limit */
     client_cs = malloc(max_descriptors * sizeof(struct Client_conn));
 
