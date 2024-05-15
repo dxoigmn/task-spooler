@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/select.h>
+#include <sys/stat.h>
 
 #ifdef linux
 
@@ -195,6 +196,9 @@ void server_main(int notify_fd, char *_path) {
     res = listen(ls, 0);
     if (res == -1)
         error("Error listening.");
+
+    // chmod ug+rwx
+    chmod(addr.sun_path, S_IRWXU|S_IRWXG);
 
     install_sigterm_handler();
 
